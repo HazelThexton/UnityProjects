@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bounce : MonoBehaviour
 {
+
+public GameObject: the_other_object
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,15 @@ public class Bounce : MonoBehaviour
         
     }
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
-		other.GetComponent<Rigidbody>().AddForce(0,1500.0f,0);
+		other.GetComponent<Rigidbody>().AddForce(0,700.0f*Time.deltaTime,0);
+	}
+
+private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject == the_other_object){
+other.GetComponent<AudioSource>().Play();
+}
 	}
 }
